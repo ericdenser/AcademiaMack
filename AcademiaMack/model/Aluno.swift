@@ -5,7 +5,7 @@
 //  Created by Eric on 08/09/25.
 //
 class Aluno: Pessoa {
-    private var matricula: String
+    var matricula: String
     private var nivel: NivelAluno = NivelAluno.iniciante
     private(set) var plano: Plano
     
@@ -16,6 +16,7 @@ class Aluno: Pessoa {
         
         super.init(nome: nome, email: email)
     }
+    
     
     override func getDescricao() -> String {
         return "Nome: \(nome) | Email: \(email) | Matrícula: \(matricula) | Nivel: \(nivel) | Plano: \(plano)"
