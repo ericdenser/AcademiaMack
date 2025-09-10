@@ -21,16 +21,27 @@ public class Principal {
         
         
         //testando novas implementacoes
-        let newPlano = Plano(nome: "Plano Basico")
+        let newPlano = PlanoAnual()
         let newInstrutor = Instrutor(nome: "Japa mack", email: "Japamackmack@mack", especialidade: "Cortar sushi")
         let newAluno = Aluno(nome: "Bordou", email: "Bordoumack@mackmack", matricula: "123", nivel: NivelAluno.iniciante, plano: newPlano)
         let newAluno2 = Aluno(nome: "Eric", email: "Ericumack@mackmack", matricula: "321", nivel: NivelAluno.iniciante, plano: newPlano)
-        let newAulaColetiva = AulaColetiva(nome: "Aula de sushi", instrutor: newInstrutor, aluno: newAluno, capacidadeMaxima: 20)
+        let newAulaColetiva = AulaColetiva(nome: "Aula de sushi", instrutor: newInstrutor)
         
         newAulaColetiva.inscrever(aluno: newAluno)
         newAulaColetiva.inscrever(aluno: newAluno2)
+        newAulaColetiva.inscrever(aluno: newAluno2)
         print(newAulaColetiva.getDescricao())
         print(newAulaColetiva.instrutor.getDescricao())
+        
+        let newAcademia = Academia(nome: "AcademiaMack")
+        newAcademia.contratarInstrutor(newInstrutor)
+        newAcademia.contratarInstrutor(newInstrutor)
+        newAcademia.matricularAluno(newAluno)
+        newAcademia.matricularAluno(nome: "Arthur", email: "Xucreza@gmail", matricula: "333", nivel: NivelAluno.avancado, plano: newPlano)
+        newAcademia.listarAulas()
+        newAcademia.listarAlunos()
+        newAcademia.buscarAluno(porMatricula: "123")
+        print(newPlano.calcularMensalidade())
     }
     
     

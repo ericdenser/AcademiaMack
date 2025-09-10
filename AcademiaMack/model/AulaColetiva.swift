@@ -5,13 +5,11 @@
 //  Created by Eric on 09/09/25.
 //
 class AulaColetiva: Aula {
-    private(set) var alunosInscritos: [String: Aluno]
-    var capacidadeMaxima = 25
+    private(set) var alunosInscritos: [String: Aluno] = [:]
+    var capacidadeMaxima: Int
     
-    init(nome: String, instrutor: Instrutor, aluno: Aluno, capacidadeMaxima: Int) {
-        self.capacidadeMaxima = capacidadeMaxima
-        self.alunosInscritos = [aluno.matricula: aluno]
-        
+    override init(nome: String, instrutor: Instrutor) {
+        capacidadeMaxima = 25
         super.init(nome: nome, instrutor: instrutor)
     }
     
@@ -22,12 +20,11 @@ class AulaColetiva: Aula {
             return false
         }
         
-        for (key, _) in alunosInscritos {
-            if (key == aluno.matricula) {
-                print("Aluno \(aluno.nome) já matriculado!")
-                return false
-            }
+        if alunosInscritos.keys.contains(aluno.matricula) {
+            print("Aluno \(aluno.nome) já matriculado!")
+            return false
         }
+        
         alunosInscritos[aluno.matricula] = aluno
         print("Aluno \(aluno.nome) matriculado com sucesso!")
         return true

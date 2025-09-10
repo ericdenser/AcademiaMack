@@ -19,6 +19,6 @@ class Aluno: Pessoa {
     
     
     override func getDescricao() -> String {
-        return "Nome: \(nome) | Email: \(email) | Matrícula: \(matricula) | Nivel: \(nivel) | Plano: \(plano)"
+        return "Nome: \(nome) | Email: \(email) | Matrícula: \(matricula) | Nivel: \(nivel) | Plano: \(plano.nome)"
     }
 }
