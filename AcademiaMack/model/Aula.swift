@@ -5,7 +5,7 @@
 //  Created by Eric on 09/09/25.
 //
 class Aula {
-    var nome: String
+    let nome: String
     var instrutor: Instrutor
     
     init(nome: String, instrutor: Instrutor) {

@@ -9,84 +9,62 @@ import Foundation
 public class Principal {
     
     func exibir() {
-//        print("Bem vindo")
-//        let nome = lerString(prompt: "Informe seu nome")
-//        let email = lerString(prompt: "Informe seu email")
-//        let novaPessoa = Pessoa(nome: nome, email: email)
-//        print(novaPessoa.getDescricao())
-//        
-//        for opcao in NivelAluno.allCases {
-//            print(opcao)
-//        }
         
+        let newAcademia = Academia(nome: "Academia POO 360")
+        let planoMensal = PlanoMensal()
+        let planoAnual = PlanoAnual()
+        let instrutor1 = Instrutor(nome: "Jamalson", email: "jamalson@gmail.com", especialidade: "Treinos de Perna")
+        let instrutor2 = Instrutor(nome: "Yamalson", email: "yamalson@gmail.com", especialidade: "Treinos de Pescoco")
         
-        //testando novas implementacoes
-        let newPlano = PlanoAnual()
-        let newInstrutor = Instrutor(nome: "Japa mack", email: "Japamackmack@mack", especialidade: "Cortar sushi")
-        let newAluno = Aluno(nome: "Bordou", email: "Bordoumack@mackmack", matricula: "123", nivel: NivelAluno.iniciante, plano: newPlano)
-        let newAluno2 = Aluno(nome: "Eric", email: "Ericumack@mackmack", matricula: "321", nivel: NivelAluno.iniciante, plano: newPlano)
-        let newAulaColetiva = AulaColetiva(nome: "Aula de sushi", instrutor: newInstrutor)
+        newAcademia.contratarInstrutor(instrutor1)
+        newAcademia.contratarInstrutor(instrutor2)
         
-        newAulaColetiva.inscrever(aluno: newAluno)
-        newAulaColetiva.inscrever(aluno: newAluno2)
-        newAulaColetiva.inscrever(aluno: newAluno2)
-        print(newAulaColetiva.getDescricao())
-        print(newAulaColetiva.instrutor.getDescricao())
+        let aluno1 = newAcademia.matricularAluno(nome: "Aurelio", email: "aurelio@gmail.com", matricula: "123", nivel: NivelAluno.iniciante, plano: planoMensal)
+        let aluno2 = newAcademia.matricularAluno(nome: "Adauber", email: "adauber@gmail.com", matricula: "456", nivel: NivelAluno.iniciante, plano: planoAnual)
         
-        let newAcademia = Academia(nome: "AcademiaMack")
-        newAcademia.contratarInstrutor(newInstrutor)
-        newAcademia.contratarInstrutor(newInstrutor)
-        newAcademia.matricularAluno(newAluno)
-        newAcademia.matricularAluno(nome: "Arthur", email: "Xucreza@gmail", matricula: "333", nivel: NivelAluno.avancado, plano: newPlano)
+        let aulaPersonal = AulaPersonal(nome: "Pescoco", instrutor: instrutor2, aluno: aluno1)
+        let aulaColetiva = AulaColetiva(nome: "Perna", instrutor: instrutor1)
+        
+        newAcademia.adicionarAula(aulaColetiva)
+        newAcademia.adicionarAula(aulaPersonal)
+        
+        aulaColetiva.inscrever(aluno: aluno1)
+        aulaColetiva.inscrever(aluno: aluno2)
+        
+        let aluno3 = Aluno(nome: "Berilson", email: "berilson@gmail.com", matricula: "777", nivel: NivelAluno.avancado, plano: planoAnual)
+        newAcademia.matricularAluno(aluno3)
+        
+        aulaColetiva.inscrever(aluno: aluno3)
+        
+        let aluno4 = Aluno(nome: "Cides", email: "cides@gmail.com", matricula: "888", nivel: NivelAluno.avancado, plano: planoAnual)
+        newAcademia.matricularAluno(aluno4)
+        
+        aulaColetiva.inscrever(aluno: aluno4)
+        
         newAcademia.listarAulas()
         newAcademia.listarAlunos()
-        newAcademia.buscarAluno(porMatricula: "123")
-        print(newPlano.calcularMensalidade())
+        
+        var testArrayAula: [Aula] = []
+        testArrayAula.append(aulaColetiva)
+        testArrayAula.append(aulaPersonal)
+        
+        for aula in testArrayAula {
+            print(aula.getDescricao())
+        }
+        
+        var testArrayPessoa: [Pessoa] = []
+        testArrayPessoa.append(aluno1)
+        testArrayPessoa.append(instrutor1)
+        
+        for pessoa in testArrayPessoa {
+            print(pessoa.getDescricao())
+        }
+        
+        let relatorio = newAcademia.gerarRelatorio()
+        
+        
+        print("Total alunos matriculados: \(relatorio.totalAlunos) | Total instrutores: \(relatorio.totalInstrutores) | Total de Aulas:  \(relatorio.totalAulas)")
+        
     }
     
-    
-    
-    
-    
-    
-    
-    
-//    func lerString(prompt: String) -> String {
-//        while true {
-//            print(prompt)
-//            if let input = readLine(), !input.isEmpty {
-//                return input
-//            } else {
-//                print("Erro ao processar entrada, tente novamente")
-//            }
-//        }
-//    }
-//    
-//    func lerDouble(prompt: String) -> Double {
-//        while true {
-//            print(prompt)
-//            if let input = readLine(), let num = Double(input) {
-//                if (num > 0) {
-//                    return num
-//                } else {
-//                   print("Erro ao processar entrada, insira um double válido! (use '.' para casas decimais)")
-//                }
-//                
-//            }
-//        }
-//    }
-//    
-//    func lerInt(prompt: String) -> Int {
-//        while true {
-//            print(prompt)
-//            if let input = readLine(), let num = Int(input) {
-//                if (num > 0) {
-//                    return num
-//                } else {
-//                   print("Erro ao processar entrada, insira um inteiro válido!")
-//                }
-//                
-//            }
-//        }
-//    }
 }
