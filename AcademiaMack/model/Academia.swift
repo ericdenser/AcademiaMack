@@ -5,7 +5,7 @@
 //  Created by Eric on 10/09/25.
 //
 class Academia {
-    private let nome: String
+    let nome: String
     private(set) var alunosMatriculados: [String: Aluno] = [:]
     private(set) var instrutoresContratados: [String: Instrutor] = [:]
     private var aparelhos: [Aparelho] = []
@@ -16,12 +16,24 @@ class Academia {
     }
     
     func adicionarAparelho(_ aparelho: Aparelho) {
-        aparelhos.append(aparelho)
+        if aparelhos.contains( where: {$0.nomeItem == aparelho.nomeItem }) {
+            print("Aparelho ja adicionado!")
+            return
+        } else {
+            aparelhos.append(aparelho)
+            print("Aparelho adicionado com sucesso!")
+        }
     }
     
     
     func adicionarAula(_ aula: Aula) {
-        aulasDisponiveis.append(aula)
+        if aulasDisponiveis.contains( where: {$0.nome == aula.nome }) {
+            print("Aula ja adicionada!")
+            return
+        } else {
+            aulasDisponiveis.append(aula)
+            print("Aula adicionada com sucesso!")
+        }
     }
     
     func contratarInstrutor(_ instrutor: Instrutor) {

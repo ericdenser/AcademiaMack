@@ -6,7 +6,7 @@
 //  Created by Eric on 09/09/25.
 //
 class Aparelho: Manutencao {
-    var nomeItem: String
+    let nomeItem: String
     var dataUltimaManutencao: String = "Nenhuma"
 
     

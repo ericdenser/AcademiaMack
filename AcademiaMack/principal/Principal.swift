@@ -23,7 +23,7 @@ public class Principal {
         let aluno2 = newAcademia.matricularAluno(nome: "Adauber", email: "adauber@gmail.com", matricula: "456", nivel: NivelAluno.iniciante, plano: planoAnual)
         
         let aulaPersonal = AulaPersonal(nome: "Pescoco", instrutor: instrutor2, aluno: aluno1)
-        let aulaColetiva = AulaColetiva(nome: "Perna", instrutor: instrutor1)
+        let aulaColetiva = AulaColetiva(nome: "Perna", instrutor: instrutor1, capacidadeMaxima: 0)
         
         newAcademia.adicionarAula(aulaColetiva)
         newAcademia.adicionarAula(aulaPersonal)
